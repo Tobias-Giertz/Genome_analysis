@@ -8,10 +8,9 @@
 #SBATCH -J test_count_reads
 #SBATCH --mail-type=ALL 
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
-#SBATCH -o ga_code/ga_slurm_logs/test_count_reads-%j.out
-#SBATCH -e ga_code/ga_slurm_logs/test_count_reads-%j.err
+#SBATCH --output=ga_code/ga_slurm_logs/test_count_reads-%j.out
 
-# Load necessary modules
+# Load modules
 module load bioinfo-tools
 
 # Run your script on one of the raw files
