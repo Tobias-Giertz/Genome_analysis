@@ -1,7 +1,9 @@
-#!/bin/bash
+#!/bin/bash -l
+
 #SBATCH -A uppmax2025-3-3_2
+#SBATCH -M snowy
 #SBATCH -p core
-#SBATCH -n 1
+#SBATCH -n 2
 #SBATCH -t 00:02:00
 #SBATCH -J test_count_reads
 #SBATCH -o ga_code/ga_slurm_logs/test_count_reads-%j.out
