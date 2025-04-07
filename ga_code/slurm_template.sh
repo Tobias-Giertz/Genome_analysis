@@ -1,5 +1,7 @@
-#!/bin/bash
+#!/bin/bash -l
+
 #SBATCH -A uppmax2025-3-3     # Your project ID
+#SBATCH -M snowy
 #SBATCH -p core               # Partition (core/short etc.)
 #SBATCH -n 2                  # Number of cores
 #SBATCH -t 01:00:00           # Time limit (hh:mm:ss)
