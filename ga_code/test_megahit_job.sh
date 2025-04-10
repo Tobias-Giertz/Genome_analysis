@@ -21,8 +21,8 @@ OUTDIR=/home/tobia/Genome_analysis/ga_analyses/02_assembly/test_megahit_out_01
 
 # Run MEGAHIT with a subset of reads (e.g. first 100k lines = 25k reads)
 megahit \
-  -1 <(zcat /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz | head -n 100000) \
-  -2 <(zcat /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz | head -n 100000) \
+  -1 <(zcat /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz | head -n 10000) \
+  -2 <(zcat /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz | head -n 10000) \
   -o $OUTDIR \
   --min-contig-len 500 \
   --presets meta-sensitive
