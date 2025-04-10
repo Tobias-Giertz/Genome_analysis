@@ -16,8 +16,8 @@ module load bioinfo-tools
 module load megahit
 
 # Make output dir
-OUTDIR=/home/tobia/Genome_analysis/ga_analyses/02_assembly/test_megahit_out
-mkdir -p $OUTDIR
+OUTDIR=/home/tobia/Genome_analysis/ga_analyses/02_assembly/test_megahit_out_01
+
 
 # Run MEGAHIT with a subset of reads (e.g. first 100k lines = 25k reads)
 megahit \
