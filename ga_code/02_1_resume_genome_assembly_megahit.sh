@@ -1,11 +1,10 @@
 #!/bin/bash -l
 
 #SBATCH -A uppmax2025-3-3
-#SBATCH --reservation=uppmax2025-3-3_3
 #SBATCH -M snowy
 #SBATCH -p core
 #SBATCH -n 2
-#SBATCH -t 06:00:00
+#SBATCH -t 04:00:00
 #SBATCH -J full_megahit
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
