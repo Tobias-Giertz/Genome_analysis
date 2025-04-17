@@ -7,7 +7,7 @@
 #SBATCH -n 2
 #SBATCH -t 06:00:00
 #SBATCH -J full_megahit
-#SBATCH --mail-type=FAIL
+#SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
 #SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/resume_megahit-%j.out
 #SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/resume_megahit-%j.err
