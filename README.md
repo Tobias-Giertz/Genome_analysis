@@ -1,5 +1,3 @@
-#1MB462 #projekt 
-
 ## Genome Analysis Project — Paper III (Thrash et al. 2017)
 
 ### Project Overview
