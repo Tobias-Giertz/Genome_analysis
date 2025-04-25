@@ -6,7 +6,7 @@
 #SBATCH -n 4
 #SBATCH -t 04:00:00
 #SBATCH -J binning_metabat
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-type=ALL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
 #SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/binning_metabat-%j.out
 #SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/binning_metabat-%j.err
