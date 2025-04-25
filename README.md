@@ -38,8 +38,8 @@ Genome_analysis/
 
 ### Analyses Performed
 
-- [ ] Preprocessing of RNA and DNA reads with Trimmomatic
-- [ ] Test and full assembly of metagenomic reads using MEGAHIT
+- [x] Preprocessing of RNA and DNA reads with Trimmomatic
+- [x] Test and full assembly of metagenomic reads using MEGAHIT
 - [ ] Binning with MetaBAT2
 - [ ] Bin quality assessment with CheckM
 - [ ] Annotation of bins with Prokka / eggNOGmapper
