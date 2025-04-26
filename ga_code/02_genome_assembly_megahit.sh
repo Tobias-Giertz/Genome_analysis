@@ -4,7 +4,7 @@
 #SBATCH -M snowy
 #SBATCH -p core
 #SBATCH -n 2
-#SBATCH -t 06:00:00
+#SBATCH -t 10:00:00
 #SBATCH -J full_megahit
 #SBATCH --mail-type=All
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
