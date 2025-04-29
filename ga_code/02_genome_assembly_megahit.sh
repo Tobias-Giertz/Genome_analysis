@@ -23,5 +23,5 @@ megahit \
   -o /home/tobia/Genome_analysis/ga_analyses/02_assembly/full_megahit_out \
   --min-contig-len 1000 \
   --k-list 21,41,61,81,101 \
-  --k-min-1pass \
+  --kmin-1pass \
   -t 8
