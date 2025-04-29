@@ -3,10 +3,11 @@
 #SBATCH -A uppmax2025-3-3
 #SBATCH -M snowy
 #SBATCH -p core
-#SBATCH -n 2
-#SBATCH -t 10:00:00
+#SBATCH -n 8
+#SBATCH --mem=64G
+#SBATCH -t 08:00:00
 #SBATCH -J full_megahit
-#SBATCH --mail-type=All
+#SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
 #SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/full_megahit-%j.out
 #SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/full_megahit-%j.err
@@ -15,12 +16,12 @@
 module load bioinfo-tools
 module load megahit
 
-
-# Run MEGAHIT on full trimmed DNA dataset
+# Run MEGAHIT
 megahit \
   -1 /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_1.paired.trimmed.fastq.gz,/home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342133_1.paired.trimmed.fastq.gz \
   -2 /home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342129_2.paired.trimmed.fastq.gz,/home/tobia/Genome_analysis/ga_data/raw_data/DNA_trimmed/SRR4342133_2.paired.trimmed.fastq.gz \
   -o /home/tobia/Genome_analysis/ga_analyses/02_assembly/full_megahit_out \
   --min-contig-len 1000 \
-  --presets meta-sensitive
-
+  --k-list 21,41,61,81,101 \
+  --k-min-1pass \
+  -t 8
