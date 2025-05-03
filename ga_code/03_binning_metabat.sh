@@ -38,5 +38,5 @@ samtools index $OUTDIR/mapped.sorted.bam
 # Estimate depth per contig
 jgi_summarize_bam_contig_depths --outputDepth $OUTDIR/depth.txt $OUTDIR/mapped.sorted.bam
 
-# Run MetaBAT2 to bin the contigs
-metabat2 -i $CONTIGS -a $OUTDIR/depth.txt -o $OUTDIR/bin
+# Run MetaBAT to bin the contigs
+metabat -i $CONTIGS -a $OUTDIR/depth.txt -o $OUTDIR/bin
