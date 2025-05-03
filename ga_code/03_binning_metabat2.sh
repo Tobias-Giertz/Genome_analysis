@@ -16,7 +16,7 @@
 module load bioinfo-tools
 module load bwa
 module load samtools
-module load singularity
+module load apptainer
 
 # Paths
 CONTIGS=/home/tobia/Genome_analysis/ga_analyses/02_assembly/full_megahit_out/final.contigs.fa
@@ -34,6 +34,7 @@ bwa index $CONTIGS
 bwa mem -t 4 $CONTIGS $READ1_1 $READ1_2 | samtools view -Sb - > $OUTDIR/tmp1.bam
 bwa mem -t 4 $CONTIGS $READ2_1 $READ2_2 | samtools view -Sb - > $OUTDIR/tmp2.bam
 
+rm -f $OUTDIR/mapped.bam
 samtools merge -@ 4 $OUTDIR/mapped.bam $OUTDIR/tmp1.bam $OUTDIR/tmp2.bam
 rm $OUTDIR/tmp1.bam $OUTDIR/tmp2.bam
 
@@ -42,7 +43,7 @@ samtools sort -@ 4 -o $OUTDIR/mapped.sorted.bam $OUTDIR/mapped.bam
 samtools index $OUTDIR/mapped.sorted.bam
 
 # Summarize depth (inside container)
-singularity exec /tools/singularity/metabat2.sif jgi_summarize_bam_contig_depths --outputDepth $OUTDIR/depth.txt $OUTDIR/mapped.sorted.bam
+apptainer exec /tools/apptainer/metabat2.sif jgi_summarize_bam_contig_depths --outputDepth $OUTDIR/depth.txt $OUTDIR/mapped.sorted.bam
 
 # Run MetaBAT2 (inside container)
-singularity exec /tools/singularity/metabat2.sif metabat2 -i $CONTIGS -a $OUTDIR/depth.txt -o $OUTDIR/bin
+apptainer exec /tools/apptainer/metabat2.sif metabat2 -i $CONTIGS -a $OUTDIR/depth.txt -o $OUTDIR/bin
