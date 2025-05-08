@@ -18,8 +18,8 @@ module load CheckM/1.1.3
 
 # Define paths
 BINS_DIR=/proj/uppmax2025-3-3/nobackup/tobia/03_binning
-OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/05_checkm
+OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm
 mkdir -p $OUTDIR
 
 # Run CheckM lineage_wf (automated quality assessment)
-checkm lineage_wf -x fa -t 4 $BINS_DIR $OUTDIR
+checkm lineage_wf -x fa -t 4 --reduced_tree $BINS_DIR $OUTDIR
