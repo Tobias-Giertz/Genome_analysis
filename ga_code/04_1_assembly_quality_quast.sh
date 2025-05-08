@@ -18,7 +18,7 @@ module load quast
 
 # Paths
 CONTIGS=/home/tobia/Genome_analysis/ga_analyses/02_assembly/full_megahit_out/final.contigs.fa
-OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/04_quast
+OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/04_1_quast
 mkdir -p $OUTDIR
 
 # Run QUAST
