@@ -16,13 +16,15 @@
 module load bioinfo-tools
 module load CheckM/1.1.3
 
-# Define paths
+# Paths
 BINS_DIR=/proj/uppmax2025-3-3/nobackup/tobia/03_binning
 STORAGE_DIR=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm/storage
-OUTFILE=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm/qa_results.tsv
+OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm
+MARKER_FILE=/sw/bioinfo/checkm/1.1.3/rackham/data/markers/markers.tsv
+QA_FILE=$OUTDIR/qa_results.tsv
 
-# Step 1: Analyze bins (generate marker statistics)
-checkm analyze -x fa --reduced_tree $STORAGE_DIR $BINS_DIR
+# Step 1: Analyze bins
+checkm analyze -x fa $MARKER_FILE $BINS_DIR $STORAGE_DIR
 
-# Step 2: Create quality summary table
-checkm qa --tab_table -o 2 $STORAGE_DIR > $OUTFILE
+# Step 2: Summarize bin quality
+checkm qa --tab_table -o 2 $MARKER_FILE $STORAGE_DIR > $QA_FILE
