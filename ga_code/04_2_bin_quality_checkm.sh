@@ -39,4 +39,5 @@ done
 checkm lineage_wf -x fa -t 4 --reduced_tree $TMP_BINS_DIR $OUTDIR
 
 # Step 2: Summarize results
-checkm qa --tab_table -o 2 $OUTDIR/storage $OUTDIR > $OUTDIR/qa_results.tsv
+checkm qa --tab_table -o 2 $OUTDIR/storage/bin_stats_ext.pkl $OUTDIR > $OUTDIR/qa_results.tsv
+
