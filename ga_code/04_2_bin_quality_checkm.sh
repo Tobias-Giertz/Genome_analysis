@@ -28,12 +28,15 @@ TMP_BINS_DIR=$OUTDIR/checkm_input
 mkdir -p $OUTDIR
 mkdir -p $TMP_BINS_DIR
 
-# Symlink renamed bins
+# Symlink renamed bins (avoid CheckM dot bug)
 for f in $BINS_DIR/bin.*.fa; do
     base=$(basename "$f")
     newname=$(echo "$base" | sed 's/bin\.\([0-9]*\)\.fa/bin_\1.fa/')
     ln -s "$f" "$TMP_BINS_DIR/$newname"
 done
 
-# Run CheckM on the renamed input
+# Step 1: Run CheckM lineage workflow
 checkm lineage_wf -x fa -t 4 --reduced_tree $TMP_BINS_DIR $OUTDIR
+
+# Step 2: Summarize results
+checkm qa --tab_table -o 2 $OUTDIR/storage > $OUTDIR/qa_results.tsv
