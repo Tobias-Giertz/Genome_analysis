@@ -5,31 +5,23 @@
 #SBATCH -p core
 #SBATCH -n 16
 #SBATCH --mem=64G
-#SBATCH -t 01:30:00
+#SBATCH -t 02:00:00
 #SBATCH -J gtdbtk_phylogeny
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-type=ALL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
 #SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/gtdbtk-%j.out
 #SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/gtdbtk-%j.err
 
-# Load GTDB-Tk module
-module load bioinfo-tools
-module load GTDBTk/2.1.1
+# Load conda
+module load conda
+conda activate /proj/uppmax2025-3-3/nobackup/tobia/envs/gtdbtk_env
 
-# (Optional: ensure dependencies are in PATH)
-export PATH=/sw/bioinfo/hmmer/3.4/src/hmmer-3.4/src:$PATH
-export PATH=/sw/bioinfo/pplacer/1.1.alpha19/snowy/bin:$PATH
-export PATH=/sw/bioinfo/fastani/1.32/snowy/bin:$PATH
-
-# Input and output
+# Define input/output
 INPUT_DIR=/home/tobia/Genome_analysis/ga_analyses/05_selected_bins/top_bins_fa
-OUTDIR=/home/tobia/Genome_analysis/ga_analyses/05_selected_bins/gtdbtk_out
-
+OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/05_gtdbtk
 mkdir -p $OUTDIR
 
-# Run GTDB-Tk classification workflow
-gtdbtk classify_wf \
-  --genome_dir $INPUT_DIR \
-  --out_dir $OUTDIR \
-  --cpus 16
+# Run GTDB-Tk
+gtdbtk classify_wf --genome_dir $INPUT_DIR --out_dir $OUTDIR --cpus 16
+
 
