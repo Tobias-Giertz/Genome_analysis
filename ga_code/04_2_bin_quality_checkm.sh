@@ -17,12 +17,23 @@ module load bioinfo-tools
 module load CheckM/1.1.3
 
 # Set CheckM DB path
-checkm data setRoot /sw/data/CheckM_DB
+checkm data setRoot /proj/uppmax2025-3-3/nobackup/tobia/checkm_db
 
 # Define paths
 BINS_DIR=/proj/uppmax2025-3-3/nobackup/tobia/03_binning
 OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm
-mkdir -p $OUTDIR
+TMP_BINS_DIR=$OUTDIR/checkm_input
 
-# Run lineage workflow
-checkm lineage_wf -x fa -t 4 --reduced_tree $BINS_DIR $OUTDIR
+# Create output and temp input dirs
+mkdir -p $OUTDIR
+mkdir -p $TMP_BINS_DIR
+
+# Symlink renamed bins
+for f in $BINS_DIR/bin.*.fa; do
+    base=$(basename "$f")
+    newname=$(echo "$base" | sed 's/bin\.\([0-9]*\)\.fa/bin_\1.fa/')
+    ln -s "$f" "$TMP_BINS_DIR/$newname"
+done
+
+# Run CheckM on the renamed input
+checkm lineage_wf -x fa -t 4 --reduced_tree $TMP_BINS_DIR $OUTDIR
