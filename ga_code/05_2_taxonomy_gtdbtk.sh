@@ -16,17 +16,20 @@
 module load bioinfo-tools
 module load GTDBTk/2.1.1
 
-# Fix for missing dependencies (in case needed — safe to include)
+# (Optional: ensure dependencies are in PATH)
 export PATH=/sw/bioinfo/hmmer/3.4/src/hmmer-3.4/src:$PATH
 export PATH=/sw/bioinfo/pplacer/1.1.alpha19/snowy/bin:$PATH
 export PATH=/sw/bioinfo/fastani/1.32/snowy/bin:$PATH
 
-# Input directory with selected bins (6 MAGs)
-INPUT_DIR=/proj/uppmax2025-3-3/nobackup/tobia/06_gtdbtk_input
+# Input and output
+INPUT_DIR=/home/tobia/Genome_analysis/ga_analyses/05_selected_bins/top_bins_fa
+OUTDIR=/home/tobia/Genome_analysis/ga_analyses/05_selected_bins/gtdbtk_out
 
-# Output directory
-OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/06_gtdbtk_out
 mkdir -p $OUTDIR
 
-# Run GTDB-Tk classify workflow
-gtdbtk classify_wf --genome_dir $INPUT_DIR --out_dir $OUTDIR --cpus 16
+# Run GTDB-Tk classification workflow
+gtdbtk classify_wf \
+  --genome_dir $INPUT_DIR \
+  --out_dir $OUTDIR \
+  --cpus 16
+
