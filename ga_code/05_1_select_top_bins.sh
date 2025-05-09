@@ -1,17 +1,19 @@
-#!/bin/bash
+#!/bin/bash -l
 
-# Paths
-QA_RESULTS=/proj/uppmax2025-3-3/nobackup/tobia/04_2_checkm/qa_results.tsv
-BIN_DIR=/proj/uppmax2025-3-3/nobackup/tobia/03_binning
-OUT_DIR=/proj/uppmax2025-3-3/nobackup/tobia/06_gtdbtk_input
+#SBATCH -A uppmax2025-3-3
+#SBATCH -M snowy
+#SBATCH -p core
+#SBATCH -n 1
+#SBATCH -t 00:10:00
+#SBATCH -J select_top_bins
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=tobias.giertz.0318@student.uu.se
+#SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/select_top_bins-%j.out
+#SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/select_top_bins-%j.err
 
-# Create output dir if needed
-mkdir -p $OUT_DIR
+# Define paths
+INPUT_TSV=/home/tobia/Genome_analysis/ga_analyses/04_quality_control/checkm_bin_summary.tsv
+OUTPUT_TSV=/home/tobia/Genome_analysis/ga_analyses/04_quality_control/top_bins.tsv
 
-# Filter and copy high-quality bins
-awk -F '\t' 'NR>1 && $12 >= 90 && $13 < 5 {print $1}' $QA_RESULTS | while read BIN; do
-    echo "Copying $BIN..."
-    cp "$BIN_DIR/$BIN" "$OUT_DIR/"
-done
-
-echo "Done. High-quality bins copied to $OUT_DIR"
+# Extract header and filter bins with completeness ≥ 70 and contamination ≤ 10
+awk -F '\t' 'NR==1 || ($6+0) >= 70 && ($7+0) <= 10' "$INPUT_TSV" > "$OUTPUT_TSV"
