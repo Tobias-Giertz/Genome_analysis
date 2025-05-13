@@ -28,4 +28,5 @@ OUTDIR=/proj/uppmax2025-3-3/nobackup/tobia/05_gtdbtk
 mkdir -p $OUTDIR
 
 # Run GTDB-Tk
-gtdbtk classify_wf --genome_dir $INPUT_DIR --out_dir $OUTDIR --cpus 16
+gtdbtk classify_wf --genome_dir $INPUT_DIR --out_dir $OUTDIR --cpus 16 --skip_ani_screen
+
