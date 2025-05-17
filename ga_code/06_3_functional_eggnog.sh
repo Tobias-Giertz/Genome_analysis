@@ -9,8 +9,8 @@
 #SBATCH -J functional_eggnog
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
-#SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/quast-%j.out
-#SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/quast-%j.err
+#SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/functional_eggnog-%j.out
+#SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/functional_eggnog-%j.err
 
 # Load eggNOG-mapper
 module load bioinfo-tools
