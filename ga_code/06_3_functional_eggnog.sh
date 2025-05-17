@@ -20,8 +20,6 @@ module load eggNOG-mapper/2.1.9
 INPUT=/domus/h1/tobia/Genome_analysis/ga_analyses/06_annotations/bin_3_prokka/bin_3_annotation.faa
 OUTDIR=/domus/h1/tobia/Genome_analysis/ga_analyses/07_eggnog/bin_3_eggnog
 
-mkdir -p "$OUTDIR"
-
 # Run eggNOG-mapper
 emapper.py -i "$INPUT" \
   -o bin_3_emapper \
