@@ -25,5 +25,5 @@ emapper.py -i "$INPUT" \
   -o bin_3_emapper \
   --output_dir "$OUTDIR" \
   --cpu 4 \
-  --data_dir /sw/bioinfo/eggNOG-mapper/2.1.9/rackham/eggnog_data \
+  --data_dir /sw/data/eggNOG_data/5.0.0/rackham \
   --itype proteins
