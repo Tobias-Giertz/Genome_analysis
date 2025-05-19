@@ -1,18 +1,11 @@
-#!/bin/bash
+# plot_functional_heatmaps.R
 
-module load bioinfo-tools
-module load R
-
-Rscript << 'EOF'
-# Load packages
 library(tidyverse)
 library(reshape2)
 library(pheatmap)
 
-# Set working dir
 setwd("/domus/h1/tobia/Genome_analysis/ga_analyses/07_eggnog/summaries")
 
-# Function to plot
 plot_heatmap <- function(file, id_col, value_col, label, outfile) {
   df <- read_tsv(file)
   mat <- df %>%
@@ -25,8 +18,6 @@ plot_heatmap <- function(file, id_col, value_col, label, outfile) {
            filename=outfile)
 }
 
-# Plot heatmaps
 plot_heatmap("cog_counts.tsv", COG_Category, Count, "COG", "cog_heatmap.png")
 plot_heatmap("kegg_counts.tsv", KEGG_KO, Count, "KEGG", "kegg_heatmap.png")
 plot_heatmap("go_counts.tsv", GO_Term, Count, "GO Terms", "go_heatmap.png")
-EOF
