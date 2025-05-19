@@ -1,4 +1,4 @@
-#!/bin/bash -l
+#!/bin/bash
 
 module load bioinfo-tools
 module load R
