@@ -1,13 +1,12 @@
 #!/bin/bash -l
 
 #SBATCH -A uppmax2025-3-3
-#SBATCH --reservation=uppmax2025-3-3_3
 #SBATCH -M snowy
 #SBATCH -p core
 #SBATCH -n 2
-#SBATCH -t 01:00:00
+#SBATCH -t 04:00:00
 #SBATCH -J trim_RNA
-#SBATCH --mail-type=END,FAIL
+#SBATCH --mail-type=ALL
 #SBATCH --mail-user=tobias.giertz.0318@student.uu.se
 #SBATCH --output=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/trim_RNA-%j.out
 #SBATCH --error=/home/tobia/Genome_analysis/ga_code/ga_slurm_logs/trim_RNA-%j.err
@@ -19,7 +18,6 @@ module load trimmomatic
 # Define paths
 RAW=/home/tobia/Genome_analysis/ga_data/raw_data/RNA_untrimmed
 TRIMMED=/home/tobia/Genome_analysis/ga_data/trimmed_data
-mkdir -p $TRIMMED
 
 # Run Trimmomatic for each RNA sample
 trimmomatic PE -threads 2 -phred33 \
