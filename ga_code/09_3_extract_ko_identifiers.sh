@@ -7,6 +7,8 @@ for ANN in $ANNOT_DIR/bin_*_eggnog/*_emapper.emapper.annotations; do
     BIN=$(basename "$ANN" _emapper.emapper.annotations)
     OUT=$OUTDIR/${BIN}_ko.txt
 
-    grep -v "^#" "$ANN" | cut -f6 | tr ',' '\n' | grep "^K" | sort -u > "$OUT"
+    # Extract from column 12 (KEGG_ko), ignore empty fields
+    awk -F '\t' 'BEGIN{OFS="\n"} !/^#/ && $12 != "-" {split($12, a, ","); for (i in a) print a[i]}' "$ANN" | sort -u > "$OUT"
+
     echo "Extracted KO list: $OUT"
 done
