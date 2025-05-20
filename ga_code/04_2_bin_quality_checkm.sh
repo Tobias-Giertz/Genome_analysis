@@ -40,4 +40,5 @@ done
 checkm lineage_wf -x fa -t 4 --reduced_tree $TMP_BINS_DIR $OUTDIR
 
 # Run CheckM QA to summarize bin quality
-checkm qa --tab_table -o 2 -f $SUMMARY_TSV $OUTDIR/lineage.ms $OUTDIR
+checkm qa --tab_table -o 2 -f checkm_bin_summary.tsv lineage.ms storage
+
