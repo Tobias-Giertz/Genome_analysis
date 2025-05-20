@@ -23,7 +23,7 @@ for file in "$TARGET_DIR"/*.{sh,R,py}; do
 
         # Append formatted content to output file
         {
-            echo "### [$filename]"
+            echo "### $filename"
             echo "\`\`\`$lang"
             cat "$file"
             echo "\`\`\`"
