@@ -3,8 +3,9 @@
 #SBATCH -A uppmax2025-3-3
 #SBATCH -M snowy
 #SBATCH -p core
-#SBATCH -n 2
-#SBATCH -t 01:00:00
+#SBATCH -n 4
+#SBATCH --mem=16G
+#SBATCH -t 04:00:00
 #SBATCH -J expression_activity
 #SBATCH --output=ga_code/ga_slurm_logs/expression_activity-%j.out
 #SBATCH --error=ga_code/ga_slurm_logs/expression_activity-%j.err
