@@ -17,7 +17,8 @@ module load bioinfo-tools
 module load GTDB-Tk/2.4.0
 
 # Set GTDB reference database
-export GTDBTK_DATA_PATH=/proj/uppmax2025-3-3/nobackup/tobia/gtdbtk_data/release207
+export GTDBTK_DATA_PATH=/crex/data/GTDB/R214.1/rackham/release214
+
 
 # Add HMMER binaries to path
 export PATH=/sw/bioinfo/hmmer/3.4/src/hmmer-3.4/src:$PATH
